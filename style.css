@@ -1082,8 +1082,8 @@ html, body {
 
 @media (max-width: 768px) {
   #pixel-menu {
-    width: 80%;
-    padding: 0 10px;
+    width: 100%;
+    padding: 0 15px;
     justify-content: space-between;
   }
   #pixel-menu img {
