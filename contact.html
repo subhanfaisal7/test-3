@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Contact Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="name-display" class="prominent-name">Meera Alzaabi</div>
+  <nav id="pixel-menu">
+    <a href="index.html"><img src="media/home.png" alt="Home" /></a>
+    <a href="me.html"><img src="media/me.png" alt="About Me" /></a>
+    <a href="work.html"><img src="media/work.png" alt="My Work" /></a>
+    <a href="contact.html"><img src="media/contact.png" alt="Contact" /></a>
+  </nav>
+
+  <div id="name-display">Meera Alzaabi</div>
+  
+  <!-- Main Menu Overlay -->
+  <div id="main-menu">
+    <div id="main-menu-blur-runner">
+      <img src="media/runner.gif" alt="Running character blurred" />
+    </div>
+  </div>
+
+  <div id="background" class="blur" tabindex="0">
+    <div id="foreground"></div>
+    <div id="tornado"></div>
+    <div id="coin"></div>
+    <div id="bomb"></div>
+    <div id="fly"></div>
+  </div>
+
+  <!-- Contact Content - Using same style as main menu -->
+  <div id="contact-menu" class="visible">
+    <div id="contact-blur-runner">
+      <img src="media/runner.gif" alt="Running character blurred" />
+    </div>
+    
+<div id="contact-content">
+  <h2>GET IN TOUCH</h2>
+  
+  <!-- Social Section -->
+  <div class="social-section">
+    <h3>FIND ME ON:</h3>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/share/1AbWtmwfsa/?mibextid=wwXIfr" target="_blank">
+        <i class="fab fa-facebook-square"></i>
+      </a>
+      <a href="mailto:mha9507@nyu.edu" target="_blank">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.instagram.com/mhz_398/" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://github.com/mha9507" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Divider WITH proper spacing -->
+  <div class="divider" style="margin: 30px 0;"></div>
+
+
+
+<form action="https://formspree.io/f/mnnvgapr" method="POST" class="contact-form">
+  <h3>SEND ME A MESSAGE</h3>
+  <input type="text" name="name" placeholder="Your Name" class="pixel-input" required>
+  <input type="email" name="_replyto" placeholder="Your Email" class="pixel-input" required>
+  <textarea name="message" placeholder="Your Message" class="pixel-textarea" required></textarea>
+  
+  <!-- Hidden fields for better organization -->
+  <input type="hidden" name="_subject" value="New message from your website!">
+  <input type="hidden" name="_format" value="plain">
+  
+  <button type="submit" class="pixel-button">SEND <i class="fas fa-paper-plane"></i></button>
+  
+  <!-- Success/Error messages (will appear after submit) -->
+  <div class="form-alert" style="display:none; margin-top:20px; padding:10px; border-radius:8px;"></div>
+</form>
+
+
+  <div id="score">Score: 0</div>
+  <div id="popup-message"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
