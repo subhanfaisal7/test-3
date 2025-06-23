@@ -1083,12 +1083,12 @@ html, body {
 @media (max-width: 768px) {
   #pixel-menu {
     width: 100%;
-    padding: 0 15px;
+    padding: 0 10px;
     justify-content: space-between;
   }
   #pixel-menu img {
     height: 85px;
-    margin: 0 -10px; /* Adjust spacing to match the WORK page layout */
+    margin: 0 -5px; /* Adjust spacing to match the WORK page layout */
   }
   #contact-menu, #main-menu, #about-me-container {
     padding-top: 150px; /* Ensure content clears the menu */
