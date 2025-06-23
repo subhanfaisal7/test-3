@@ -1070,7 +1070,7 @@ html, body {
   input, select, textarea {
     font-size: 16px !important;
   }
-  /* ===== MOBILE ABOUT ME (ADDED FRESH 2025-06-23) ===== */
+  /*MOBILE ABOUT ME */
 @media (max-width: 768px) {
   #about-me-container {
     display: flex !important;
@@ -1146,50 +1146,4 @@ html, body {
     padding-bottom: 100px !important; /* Space for character */
   }
 }
-/* ===== GAME INSTRUCTIONS MOBILE FIX ===== */
-@media (max-width: 768px) {
-  #instructions {
-    text-align: center;
-    padding: 15px;
-    line-height: 1.5;
-  }
-
-  #instructions h1 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-  }
-
-  #instructions ul {
-    padding-left: 0;
-    list-style: none;
-  }
-
-  #instructions li {
-    margin-bottom: 8px;
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    flex-wrap: wrap;
-  }
-
-  #instructions li img {
-    width: 30px;
-    height: 30px;
-    margin: 0 8px;
-    display: inline-block;
-  }
-  /* Mobile-friendly instruction alignment */
-@media (max-width: 768px) {
-  #instructions li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-
-  #instructions li img {
-    margin-right: 10px;
-    width: 50px;
-    height: 50px;
-  }
-  
 }
