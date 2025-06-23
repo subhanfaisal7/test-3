@@ -1076,6 +1076,22 @@ html, body {
     padding-top: 10px;
   }
   #contact-menu, #main-menu {
-    padding-top: 130px; /* Increase to avoid overlap with menu */
+    padding-top: 150px; /* Increase to avoid overlap with menu */
   }
+    
+
+@media (max-width: 768px) {
+  #pixel-menu {
+    width: 100%;
+    padding: 0 10px;
+    justify-content: space-between;
+  }
+  #pixel-menu img {
+    height: 85px;
+    margin: 0 -10px; /* Adjust spacing to match the WORK page layout */
+  }
+  #contact-menu, #main-menu, #about-me-container {
+    padding-top: 150px; /* Ensure content clears the menu */
+  }
+
 }
