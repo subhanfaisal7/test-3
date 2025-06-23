@@ -1090,6 +1090,7 @@ html, body {
     margin: 20px auto;
     box-sizing: border-box;
     overflow: hidden; /* Prevents text overflow */
+    font-size: 8px;
   }
   #instructions ul {
     padding-left: 0;
