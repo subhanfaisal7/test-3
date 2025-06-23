@@ -734,7 +734,7 @@ html, body {
 }
 
 #pixel-menu img {
-  height: 155px;
+  height: 175px;
   image-rendering: pixelated;
   cursor: pointer;
   transition: transform 0.2s ease;
