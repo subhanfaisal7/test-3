@@ -1078,14 +1078,6 @@ html, body {
   #contact-menu, #main-menu {
     padding-top: 150px; /* Increase to avoid overlap with menu */
   }
-    
-
-@media (max-width: 768px) {
-  #pixel-menu {
-    width: 100%;
-    padding: 0 10px;
-   
-  }
   #pixel-menu img {
     height: 85px;
     margin: 0 -16px; /* Adjust spacing to match the WORK page layout */
