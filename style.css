@@ -1106,6 +1106,50 @@ html, body {
     margin-bottom: 8px;
     word-wrap: break-word; /* Ensures text wraps within the box */
   }
+    @media (max-width: 768px) {
+  #instructions {
+    text-align: center;
+    padding: 15px;
+    line-height: 1.5;
+  }
+
+  #instructions h1 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  #instructions ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  #instructions li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-wrap: wrap;
+  }
+
+  #instructions li img {
+    width: 30px;
+    height: 30px;
+    margin: 0 8px;
+    display: inline-block;
+  }
+  /* Mobile-friendly instruction alignment */
+@media (max-width: 768px) {
+  #instructions li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  #instructions li img {
+    margin-right: 8px;
+    width: 30px;
+    height: 30px;
+  }
 
 
 }
