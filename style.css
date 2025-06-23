@@ -1089,13 +1089,14 @@ html, body {
     width: 90%;
     margin: 20px auto;
     box-sizing: border-box;
-    overflow: auto; /* Prevents text overflow */
+    overflow: hidden; /* Prevents text overflow */
     max-height: none; /* Removes fixed height constraint */
-    line-height: 1.2;
+    line-height: 1;
+    font-size: 9px;
   }
       }
-  #instructions h2:not(:first-child), #instructions p, #instructions ul {
-    font-size: 9px;
+  #instructions h2, #instructions p, #instructions ul {
+    font-size: inherit;
   }
   #instructions ul {
     padding-left: 0;
