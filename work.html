@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>My Work - 5 Project Scroller</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', monospace;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #a4e1f0;
+  height: 100vh;
+  touch-action: pan-y;
+  font-size: 16px;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #a4e1f0;
+  transition: filter 0.3s ease;
+  z-index: -1;
+}
+
+#background.blur {
+  filter: blur(6px);
+}
+
+#foreground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('media/foreground.png') repeat-x center / cover;
+  animation: scrollBG 10s linear infinite;
+  z-index: 1;
+}
+
+@keyframes scrollBG {
+  0% { background-position-x: 0; }
+  100% { background-position-x: -1000px; }
+}
+
+#pixel-menu {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20000;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding: 2px 50px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  height: 90px;
+}
+
+#pixel-menu img {
+  height: 140px;
+  image-rendering: pixelated;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#pixel-menu img:hover {
+  transform: scale(1.1);
+}
+
+.scrolling-container {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 70px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-wrapper {
+  position: relative;
+  width: 500vw;
+  height: 100%;
+  display: flex;
+  z-index: 10;
+}
+
+.project-section {
+  width: 100vw;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  scroll-snap-align: start;
+  padding: 30px 20px;
+}
+
+.project-card {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 3px solid #5a2a83;
+  border-radius: 16px;
+  padding: 25px;
+  width: 94%;
+  max-width: 850px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  font-size: 17px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.project-card .image-container {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-card img {
+  max-width: 80%;
+  border-radius: 8px;
+  border: 2px solid #5a2a83;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 11;
+  display: block;
+  margin: 0 auto;
+  animation: pulse-glow 3s infinite;
+}
+
+.project-card img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(90, 42, 131, 0.8);
+  filter: brightness(1.05) contrast(1.1);
+  border-color: #ff6bff !important;
+  opacity: 0.85;
+  animation: pulse-glow 1s infinite;
+}
+
+.project-card .image-container::after {
+  content: "CLICK TO VIEW →";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #5a2a83;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-transform: uppercase;
+  z-index: 12;
+  box-shadow: 0 4px 15px rgba(90, 42, 131, 0.5);
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 2px solid #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.project-card .image-container:hover::after {
+  opacity: 1;
+  bottom: -25px;
+  animation: pulse-attention 1.5s infinite;
+}
+
+@keyframes pulse-attention {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.05); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 5px rgba(90, 42, 131, 0.3); }
+  50% { box-shadow: 0 0 15px rgba(90, 42, 131, 0.7); }
+  100% { box-shadow: 0 0 5px rgba(90, 42, 131, 0.3); }
+}
+
+.project-card h2 {
+  color: #5a2a83;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px #fff;
+  text-align: center;
+  font-size: 1.7rem;
+  overflow: hidden;
+  border-right: 2px solid #5a2a83;
+  white-space: nowrap;
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+.project-card p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.runner {
+  position: fixed;
+  bottom: 180px;
+  left: 80px;
+  width: 350px;
+  z-index: 5;
+  image-rendering: pixelated;
+  transition: left 0.5s ease-out;
+  pointer-events: none;
+}
+
+.nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  z-index: 50;
+  user-select: none;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.nav-arrow:hover {
+  transform: translateY(-50%) scale(1.2);
+  opacity: 1;
+}
+
+.nav-arrow.left {
+  left: 5px;
+}
+
+.nav-arrow.right {
+  right: 5px;
+}
+
+.nav-arrow object {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #5a2a83; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  .runner {
+    width: 150px;
+    bottom: 100px;
+    left: 40px;
+  }
+  
+  #pixel-menu img {
+    height: 120px;
+  }
+  
+  .project-card {
+    padding: 22px;
+  }
+  
+  .project-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+  
+  .project-card p {
+    font-size: 16px;
+  }
+  
+  .nav-arrow {
+    width: 60px;
+    height: 60px;
+  }
+
+  .project-card .image-container::after {
+    font-size: 12px;
+    padding: 6px 15px;
+    bottom: -25px;
+  }
+  
+  .project-card .image-container:hover::after {
+    bottom: -20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrolling-container {
+    padding-top: 90px; /* Reduced from 70px to match index.html */
+  }
+
+  .project-card h2 {
+    white-space: normal;
+    border-right: none;
+    animation: none;
+    font-size: 1.4rem;
+    margin-bottom: 22px;
+  }
+  
+  .project-card .image-container::after {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  .project-card img {
+    max-width: 88%;
+  }
+
+  /* Menu adjustments to match index.html */
+  #pixel-menu {
+    height: 90px;
+    padding: 0 10px;
+  }
+  
+  #pixel-menu img {
+    height: 85px !important;
+    width: auto;
+    image-rendering: pixelated;
+    margin: 0 -8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scrolling-container {
+    padding-top: 90px !important; /* Matched to index.html */
+    height: calc(100vh - 90px);
+  }
+
+  .projects-wrapper {
+    height: calc(100vh - 90px);
+  }
+
+  /* Maintain runner position */
+  .runner {
+    width: 200px;
+    bottom: calc(25vh + 30px);
+    left: 40px;
+  }
+
+  /* Project card styling - unchanged except for menu spacing */
+  .project-card {
+    padding: 18px;
+    min-height: 68vh !important;
+    margin-top: 10px;
+    width: 96%;
+    justify-content: space-between;
+  }
+  
+  .project-card h2 {
+    font-size: 1.15rem;
+    margin: 8px 0 12px 0;
+    line-height: 1.4;
+  }
+  
+  .project-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .project-card .image-container {
+    min-height: 36vh;
+    margin-bottom: 10px;
+  }
+
+  .project-card img {
+    max-width: 92%;
+    max-height: 32vh;
+    width: auto;
+    transform: none !important;
+  }
+
+  .project-card .image-container::after {
+    content: "TAP TO VIEW →";
+    font-size: 11px;
+    padding: 5px 10px;
+    bottom: -12px;
+  }
+  
+  .project-card .image-container:hover::after {
+    bottom: -10px;
+  }
+}
+
+@media (max-width: 450px) {
+  /* Runner positioning - unchanged */
+  .runner {
+    width: 180px;
+    bottom: 22vh;
+    left: 20px;
+  }
+  
+  /* Pixel menu adjustments to match index.html */
+  #pixel-menu {
+    gap: 10px;
+    padding: 0 10px;
+    height: 90px;
+  }
+  
+  #pixel-menu img {
+    height: 75px !important;
+  }
+  
+  /* Main container adjustments */
+  .scrolling-container {
+    padding-top: 90px; /* Matched to index.html */
+    height: calc(100vh - 90px);
+  }
+
+  .projects-wrapper {
+    height: calc(100vh - 90px);
+  }
+  
+  /* Project card styling */
+  .project-card {
+    padding: 15px;
+    min-height: 65vh !important;
+    margin-top: 8px;
+    width: 94%;
+  }
+  
+  .project-card h2 {
+    font-size: 1.05rem;
+    margin: 6px 0 10px 0;
+  }
+  
+  .project-card p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  
+  /* Navigation arrows */
+  .nav-arrow {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Image adjustments */
+  .project-card img {
+    max-width: 92%;
+    max-height: 30vh;
+  }
+
+  .project-card .image-container {
+    min-height: 34vh;
+    margin-bottom: 10px;
+  }
+
+  /* Tap label positioning */
+  .project-card .image-container::after {
+    content: "TAP →";
+    font-size: 9px;
+    padding: 4px 8px;
+    bottom: -10px;
+  }
+  
+  .project-card .image-container:hover::after {
+    bottom: -8px;
+  }
+}
+
+/* Scrollbar hiding */
+.scrolling-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scrolling-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ===== SMALL PHONES (<= 380px) ===== */
+@media (max-width: 380px) {
+  /* Even more compact layout */
+  #pixel-menu img {
+    height: 70px !important;
+  }
+  
+  .scrolling-container {
+    padding-top: 85px !important;
+  }
+}
+
+/* ===== GLOBAL MOBILE OVERRIDES ===== */
+@media (max-width: 768px) {
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    #pixel-menu img:hover {
+      transform: none !important;
+    }
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Background elements with blur capability -->
+  <div id="background" class="blur">
+    <div id="foreground"></div>
+  </div>
+
+  <nav id="pixel-menu">
+    <a href="index.html"><img src="media/home.png" alt="Home"></a>
+    <a href="me.html"><img src="media/me.png" alt="About Me"></a>
+    <a href="work.html"><img src="media/work.png" alt="My Work"></a>
+    <a href="contact.html"><img src="media/contact.png" alt="Contact"></a>
+  </nav>
+
+  <!-- Navigation arrows with continuously playing GIFs -->
+  <button class="nav-arrow left" id="arrowLeft">
+    <object type="image/gif" data="media/left.gif" id="leftGif">
+      <span class="fallback-arrow">←</span>
+    </object>
+  </button>
+  <button class="nav-arrow right" id="arrowRight">
+    <object type="image/gif" data="media/right.gif" id="rightGif">
+      <span class="fallback-arrow">→</span>
+    </object>
+  </button>
+
+  <div class="scrolling-container" id="scroller">
+    <!-- Projects container with exactly 5 projects -->
+    <div class="projects-wrapper">
+      <!-- Project 1 -->
+      <!-- Project 1 -->
+      <div class="project-section">
+        <div class="project-card">
+          <div class="image-container">
+            <a href="https://mha9507.github.io/IM-Assignment-1/" target="_blank">
+              <img src="media/proj1.png" alt="With Every Stroke, a Story" style="max-width: 70%; border-radius: 8px; border: 2px solid #5a2a83;">
+              
+            </a>
+          </div>
+          <h2>With Every Stroke, a Story</h2>
+          <p>A digital art portfolio blending storytelling with visual expression.</p>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-section">
+        <div class="project-card">
+          <div class="image-container">
+            <a href="https://evva5667.github.io/Do-Your-Chores-First-/#" target="_blank">
+              <img src="media/proj2.png" alt="With Every Stroke, a Story" style="max-width: 70%; border-radius: 8px; border: 2px solid #5a2a83;">
+            </a>
+          </div>
+          <h2>Do Your Chores!</h2>
+          <p>A group-made interactive comic where a boy completes chores for grandma's Wi-Fi, encountering a key decision that shapes the story.</p>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-section">
+        <div class="project-card">
+          <div class="image-container">
+            <a href="https://mha9507.github.io/Assignment-3/index.html" target="_blank">
+              <img src="media/proj3.png" alt="Through the Eyes of Then" style="max-width: 70%; border-radius: 8px; border: 2px solid #5a2a83;">
+            </a>
+          </div>
+          <h2>Through the Eyes of Then</h2>
+          <p>A nostalgic group project that brings to life the chaotic school mornings of a 2000s kid — featuring interactive audio and a playful decision.</p>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-section">
+        <div class="project-card">
+          <div class="image-container">
+            <a href="https://mha9507.github.io/Assignment-4/" target="_blank">
+              <img src="media/proj4.png" alt="Teleport Through Sight" style="max-width: 70%; border-radius: 8px; border: 2px solid #5a2a83;">
+            </a>
+          </div>
+          <h2>Teleport Through Sight</h2>
+          <p>A group-created interactive video where a student tests teleportation glasses, uncovering eerie secrets. Features two pivotal choices and immersive 3D interactivity.</p>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-section">
+        <div class="project-card">
+          <div class="image-container">
+            <a href="https://mha9507.github.io/Loading-Meera/" target="_blank">
+              <img src="media/proj5.png" alt="Loading...Meera" style="max-width: 70%; border-radius: 8px; border: 2px solid #5a2a83;">
+            </a>
+          </div>
+          <h2>Loading...Meera</h2>
+          <p>An interactive portfolio website featuring a Mario-inspired mini-game where players collect coins to reveal fun facts about me, followed by a showcase of my work.</p>
+        </div>
+      </div>
+    
+    <!-- Runner character -->
+    <img src="media/run.gif" class="runner" id="runner" alt="Running character">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const background = document.getElementById('background');
+      const scroller = document.getElementById('scroller');
+      const runner = document.getElementById('runner');
+      const arrowLeft = document.getElementById('arrowLeft');
+      const arrowRight = document.getElementById('arrowRight');
+      const leftGif = document.getElementById('leftGif');
+      const rightGif = document.getElementById('rightGif');
+      const projectsWrapper = document.querySelector('.projects-wrapper');
+      
+      // Remove blur effect when page loads
+      background.classList.remove('blur');
+      
+      // Function to force GIFs to continuously loop
+      function forceGifLoop(gifObject) {
+        const originalSrc = gifObject.data;
+        
+        // First reset immediately
+        setTimeout(() => {
+          gifObject.data = '';
+          gifObject.data = originalSrc;
+        }, 100);
+        
+        // Then set up periodic reset
+        setInterval(() => {
+          gifObject.data = '';
+          gifObject.data = originalSrc;
+        }, 3000); // Reset every 3 seconds
+      }
+      
+      // Check if GIFs loaded and force them to loop
+      function checkAndLoopGifs() {
+        if (leftGif.contentDocument) {
+          forceGifLoop(leftGif);
+        } else {
+          leftGif.addEventListener('load', () => forceGifLoop(leftGif));
+        }
+        
+        if (rightGif.contentDocument) {
+          forceGifLoop(rightGif);
+        } else {
+          rightGif.addEventListener('load', () => forceGifLoop(rightGif));
+        }
+        
+        // Show fallback arrows if GIFs fail to load
+        setTimeout(() => {
+          if (!leftGif.contentDocument) {
+            leftGif.nextElementSibling.style.display = 'block';
+          }
+          if (!rightGif.contentDocument) {
+            rightGif.nextElementSibling.style.display = 'block';
+          }
+        }, 2000);
+      }
+      
+      // Initialize GIF looping
+      checkAndLoopGifs();
+      
+      // Set initial scroll position
+      scroller.scrollLeft = 0;
+      let currentProject = 0;
+      const projectCount = 5; // Changed from 7 to 5
+      let projectWidth = window.innerWidth;
+      
+      // Handle window resize
+      function handleResize() {
+        projectWidth = window.innerWidth;
+        // Scroll to current project after resize
+        scrollToProject(currentProject, false);
+      }
+      
+      window.addEventListener('resize', handleResize);
+      
+      // Calculate total scrollable width
+      const totalWidth = projectsWrapper.scrollWidth;
+      
+      // Update arrow visibility based on current position
+      function updateArrows() {
+        arrowLeft.style.display = currentProject > 0 ? 'flex' : 'none';
+        arrowRight.style.display = currentProject < projectCount - 1 ? 'flex' : 'none';
+      }
+      
+      // Scroll to specific project
+      function scrollToProject(index, smooth = true) {
+        currentProject = Math.max(0, Math.min(index, projectCount - 1));
+        scroller.scrollTo({
+          left: currentProject * projectWidth,
+          behavior: smooth ? 'smooth' : 'auto'
+        });
+        updateArrows();
+      }
+      
+      // Navigation arrow handlers
+      arrowLeft.addEventListener('click', () => scrollToProject(currentProject - 1));
+      arrowRight.addEventListener('click', () => scrollToProject(currentProject + 1));
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') scrollToProject(currentProject - 1);
+        if (e.key === 'ArrowRight') scrollToProject(currentProject + 1);
+      });
+      
+      // Update positions on scroll
+      scroller.addEventListener('scroll', function() {
+        const scrollPos = scroller.scrollLeft;
+        const scrollPercentage = scrollPos / (totalWidth - window.innerWidth);
+        
+        // Update current project
+        currentProject = Math.round(scrollPos / projectWidth);
+        updateArrows();
+        
+        // Move runner across the screen
+        const runnerMaxPos = window.innerWidth - 120;
+        runner.style.left = `${30 + (scrollPercentage * runnerMaxPos)}px`;
+      }, { passive: true });
+      
+      // Add runner animation
+      let frame = 0;
+      setInterval(() => {
+        frame = (frame + 1) % 4;
+        runner.style.transform = `translateY(${frame % 2 === 0 ? -5 : 0}px)`;
+      }, 200);
+      
+      // Initialize arrows
+      updateArrows();
+      
+      // Touch support for mobile
+      let isDragging = false;
+      let startX;
+      let scrollLeft;
+      let startTime;
+      
+      scroller.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX - scroller.offsetLeft;
+        scrollLeft = scroller.scrollLeft;
+        startTime = Date.now();
+        scroller.style.cursor = 'grabbing';
+        scroller.style.scrollSnapType = 'none';
+      });
+      
+      scroller.addEventListener('mouseleave', () => {
+        if (isDragging) {
+          isDragging = false;
+          scroller.style.cursor = 'grab';
+          scroller.style.scrollSnapType = 'x mandatory';
+          snapToNearestProject();
+        }
+      });
+      
+      scroller.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          scroller.style.cursor = 'grab';
+          scroller.style.scrollSnapType = 'x mandatory';
+          const elapsed = Date.now() - startTime;
+          // Only snap if it wasn't a quick swipe
+          if (elapsed > 100) {
+            snapToNearestProject();
+          }
+        }
+      });
+      
+      scroller.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - scroller.offsetLeft;
+        const walk = (x - startX) * 2;
+        scroller.scrollLeft = scrollLeft - walk;
+      });
+      
+      // Touch events
+      scroller.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].pageX - scroller.offsetLeft;
+        scrollLeft = scroller.scrollLeft;
+        startTime = Date.now();
+        scroller.style.scrollSnapType = 'none';
+      }, { passive: true });
+      
+      scroller.addEventListener('touchend', () => {
+        if (isDragging) {
+          isDragging = false;
+          scroller.style.scrollSnapType = 'x mandatory';
+          const elapsed = Date.now() - startTime;
+          // Only snap if it wasn't a quick swipe
+          if (elapsed > 100) {
+            snapToNearestProject();
+          }
+        }
+      });
+      
+      scroller.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - scroller.offsetLeft;
+        const walk = (x - startX) * 2;
+        scroller.scrollLeft = scrollLeft - walk;
+      }, { passive: true });
+      
+      // Snap to nearest project after dragging
+      function snapToNearestProject() {
+        const scrollPos = scroller.scrollLeft;
+        const projectIndex = Math.round(scrollPos / projectWidth);
+        scrollToProject(projectIndex);
+      }
+      
+      // Prevent vertical scroll when swiping horizontally
+      document.body.addEventListener('touchmove', function(e) {
+        if (isDragging) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    });
+  </script>
+</body>
+</html>

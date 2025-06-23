@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>About Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Modified name display to be more prominent -->
+<div id="name-display" class="prominent-name">Meera Alzaabi</div>
+  <nav id="pixel-menu">
+    <a href="index.html"><img src="media/home.png" alt="Home" /></a>
+    <a href="me.html"><img src="media/me.png" alt="About Me" /></a>
+    <a href="work.html"><img src="media/work.png" alt="My Work" /></a>
+    <a href="contact.html"><img src="media/contact.png" alt="Contact" /></a>
+  </nav>
+
+<!-- About Me Content -->
+<!-- About Me Content -->
+<div id="about-me-container">
+  <h1 class="typewriter">About Me</h1>
+  
+  <!-- Desktop version of runner (hidden on mobile) -->
+  <img id="about-me-runner" src="media/run2.gif" alt="Running character">
+    <div id="monster-prompt">Click me!</div>
+
+  
+  <div class="info-section">
+    <div class="info-item typewriter" style="animation-delay: 0.5s">
+      <span class="info-label">Name:</span>
+      <span class="info-text">Meera Alzaabi <span class="icon">🧕 </span></span>
+    </div>
+    <div class="info-item typewriter" style="animation-delay: 1s">
+      <span class="info-label">City:</span>
+      <span class="info-text">Abu Dhabi <span class="icon">🌍</span></span>
+    </div>
+    <div class="info-item typewriter" style="animation-delay: 1.5s">
+      <span class="info-label">Age:</span>
+      <span class="info-text">19 <span class="icon">🪪</span></span>
+    </div>
+    <div class="info-item typewriter" style="animation-delay: 2s">
+      <span class="info-label">Degree:</span>
+      <span class="info-text">Computer Science <span class="icon">👨‍💻</span></span>
+    </div>
+  </div>
+
+  <h2 class="typewriter" style="animation-delay: 2.5s">Coding Languages</h2>
+
+  <div class="coding-languages typewriter-multiline" style="animation-delay: 3s">
+    <div class="language-item">
+      <img src="media/python.png" alt="Python" class="language-icon">
+      <span>Python</span>
+    </div>
+    <div class="language-item">
+      <img src="media/java.png" alt="Java" class="language-icon">
+      <span>Java</span>
+    </div>
+    <div class="language-item">
+      <img src="media/html.png" alt="HTML" class="language-icon">
+      <span>HTML</span>
+    </div>
+    <div class="language-item">
+      <img src="media/c+.png" alt="C++" class="language-icon">
+      <span>C++</span>
+    </div>
+    <div class="language-item">
+      <img src="media/js.png" alt="JavaScript" class="language-icon">
+      <span>JavaScript</span>
+    </div>
+    <div class="language-item">
+      <img src="media/css.png" alt="CSS" class="language-icon">
+      <span>CSS</span>
+    </div>
+  </div>
+
+
+  
+
+  <!-- Mobile version of runner and prompt (hidden on desktop) -->
+  <div id="mobile-runner-container">
+
+  </div>
+</div>
+
+
+
+
+  <div id="main-menu">
+    <div id="main-menu-blur-runner">
+      <img src="media/runner.gif" alt="Running character blurred" />
+    </div>
+  </div>
+
+  <!-- Background elements (keep these for consistency) -->
+  <div id="background" class="blur" tabindex="0">
+    <div id="foreground"></div>
+    <div id="tornado"></div>
+    <div id="runner">
+      <img src="media/runner.gif" alt="Running character" />
+    </div>
+    <div id="coin"></div>
+    <div id="bomb"></div>
+    <div id="fly"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

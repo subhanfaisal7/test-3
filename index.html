@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>My Portfolio - Running Character Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+  <nav id="pixel-menu">
+    <a href="index.html"><img src="media/home.png" alt="Home" /></a>
+    <a href="me.html"><img src="media/me.png" alt="About Me" /></a>
+    <a href="work.html"><img src="media/work.png" alt="My Work" /></a>
+    <a href="contact.html"><img src="media/contact.png" alt="Contact" /></a>
+  </nav>
+
+
+  <div id="name-display">Meera Alzaabi</div>
+  <!-- Main Menu Overlay -->
+
+
+<div id="main-menu">
+  <div id="main-menu-blur-runner">
+    <img src="media/runner.gif" alt="Running character blurred" />
+  </div>
+  
+  <div id="instructions">
+    <h1>Loading...Meera</h1>
+    <p><strong>How to Play:</strong></p>
+    <ul>
+      <li><strong>SPACE</strong> or <strong>TAP</strong> to jump (5x max mid-air).</li>
+      <li><img src="media/coin.gif" class="instruction-icon"> = +1 point; <img src="media/bomb.gif" class="instruction-icon"> = -1 point.</li>
+      <li>score 0 + <img src="media/bomb.gif" class="instruction-icon"> hit = Game over</li>
+      <li><img src="media/tornado.gif" class="instruction-icon fly-icon"> = Game Over</li>
+      <li>Catch the <img src="media/fly.gif" class="instruction-icon fly-icon"> to learn about me!</li>
+    </ul>
+  </div>
+
+
+  <button id="start-btn" aria-label="Start Game">
+    <img src="media/start.png" alt="Start Button" />
+  </button>
+</div>
+
+  <div id="background" class="blur" tabindex="0">
+    <div id="foreground"></div>
+    <div id="tornado"></div>
+    <div id="runner">
+      <img src="media/runner.gif" alt="Running character" />
+    </div>
+    <div id="coin"></div>
+    <div id="bomb"></div>
+    <div id="fly"></div>
+  </div>
+
+  <div id="score">Score: 0</div>
+  <div id="popup-message"></div>
+
+  <!-- Game Over Overlay -->
+  <div id="game-over-overlay">
+    <div>GAME OVER</div>
+    <button id="restart-btn" aria-label="Restart Game">
+      <img src="media/restart.png" alt="Restart Button" />
+    </button>
+  </div>
+
+  <!-- Background music -->
+  <audio id="bg-music" src="media/songs.mp3" loop preload="auto"></audio>
+  <audio id="jump-audio" src="media/jump-sound.wav" preload="auto"></audio>
+
+ 
+
+
+
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
