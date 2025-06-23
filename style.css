@@ -1076,6 +1076,6 @@ html, body {
     padding-top: 10px;
   }
   #contact-menu, #main-menu {
-    padding-top: 100px; /* Increase to avoid overlap with menu */
+    padding-top: 130px; /* Increase to avoid overlap with menu */
   }
 }
