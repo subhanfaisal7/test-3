@@ -1081,5 +1081,24 @@ html, body {
   #pixel-menu img {
     height: 85px;
     margin: 0 -16px; /* Adjust spacing to match the WORK page layout */
+  }
+    @media (max-width: 768px) {
+  #instructions {
+    padding: 20px;
+    max-width: 90%;
+    width: 90%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevents text overflow */
+  }
+  #instructions ul {
+    padding-left: 0;
+    margin: 0;
+  }
+  #instructions ul li {
+    margin-bottom: 10px;
+    word-wrap: break-word; /* Ensures text wraps within the box */
+  }
+
 
 }
