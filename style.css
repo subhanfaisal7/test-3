@@ -1075,8 +1075,8 @@ html, body {
   #about-me-container {
     display: flex !important;
     flex-direction: column !important;
-    padding: 20px !important;
-    margin-top: 80px !important;
+    padding: 10px !important;
+    margin-top: 40px !important;
   }
 
   .info-section, .coding-languages {
@@ -1107,43 +1107,4 @@ html, body {
     overflow: visible !important;
     padding: 15px !important;
   }
-  
-  .info-item {
-    white-space: normal !important;
-    word-break: break-word !important;
-  }
-  
-  /* Ensure "Computer Science" shows completely */
-  .info-item:nth-child(4) { /* Targets Degree line */
-    white-space: normal !important;
-  }
-
-  /* For Game Instructions */
-  #instructions {
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-  }
-  
-  #instructions li {
-    white-space: normal !important;
-    text-align: left !important;
-  }
-  /* ===== GUARANTEED CHARACTER POSITIONING ===== */
-@media (max-width: 768px) {
-  #about-me-runner {
-    position: fixed !important; /* Override everything */
-    bottom: 20px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 120px !important;
-    z-index: 100 !important;
-    margin: 0 !important;
-    top: auto !important;
-    right: auto !important;
-  }
-
-  #about-me-container {
-    padding-bottom: 100px !important; /* Space for character */
-  }
-}
 }
