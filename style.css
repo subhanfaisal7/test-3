@@ -1088,10 +1088,6 @@ html, body {
   }
   #pixel-menu img {
     height: 85px;
-    margin: 0 -20px; /* Adjust spacing to match the WORK page layout */
-  }
-  #contact-menu, #main-menu, #about-me-container {
-    padding-top: 150px; /* Ensure content clears the menu */
-  }
+    margin: 0 -16px; /* Adjust spacing to match the WORK page layout */
 
 }
